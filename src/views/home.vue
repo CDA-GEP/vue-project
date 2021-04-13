@@ -1,8 +1,8 @@
 <template>
   <div class="marketing text-center mt-3">
-
+<!--
     <h2 v-if="user">Bonjour {{ user }}</h2>
-    <h2 v-else>Vous n'êtes pas connecté</h2>
+    <h2 v-else>Vous n'êtes pas connecté</h2> -->
 
 
     <!-- Three columns of text below the carousel -->
@@ -79,17 +79,17 @@
 export default {
   data(){
     return{
-        error: null
+        error: null,
+        user: null
     }
   },
-  mounted(){
-      this.user = localStorage.getItem('username')
-      fetch('http://localhost:90/gsb/rapport', {
+  props:['user'],
+  async mounted(){
+      await fetch('http://localhost:90/gsb/rapport', {
         method: 'GET',
         headers:{
           "Content-type": "Application/json"
-        },
-        credentials: "include"
+        }
       })
       .then((response) => {
         if(response.status === 401){

@@ -41,8 +41,7 @@ export default {
         headers:{
           "Content-type": "application/json",
           "Authorization": "Basic " + cryptedData
-        },
-        credentials: "include"
+        }
       })
       .then((response) => {
         if(response.status === 401){

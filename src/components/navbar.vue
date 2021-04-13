@@ -19,11 +19,11 @@
         </ul>
         {{ user }}
         <router-link v-if="!user" class="btn btn-outline-success" to="/login">Login</router-link>
-        <router-link v-if="user" class="btn btn-outline-success" to="/logout">Logout</router-link>
+        <router-link v-if="user" class="btn btn-outline-success" @click="logout" to="/">Logout</router-link>
       </div>
     </div>
   </nav>
-</template>s
+</template>
 
 <script>
 export default {
@@ -32,7 +32,12 @@ export default {
       
     }
   },
-  props:['user']
+  props:['user'],
+  methods:{
+    logout: function(){
+      localStorage.clear()
+    }
+  }
 }
 </script>
 
